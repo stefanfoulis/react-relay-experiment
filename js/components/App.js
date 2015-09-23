@@ -33,7 +33,7 @@ export default Relay.createContainer(App, {
           },
         },
         ${AppList.getFragment('viewer')},
-      }
+      },
     `,
   },
 });

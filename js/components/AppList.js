@@ -1,4 +1,6 @@
 import 'babel/polyfill';
+import AppListItem from '../components/AppListItem.js';
+
 
 class AppList extends React.Component {
     render() {
@@ -13,7 +15,7 @@ class AppList extends React.Component {
         var apps = this.props.viewer.apps;
         return (
             <ul>{apps.edges.map(app =>
-                <li>{app.node.name} (ID: {app.node.id})</li>
+                <AppListItem app={app} />
             )}
             </ul>
         );

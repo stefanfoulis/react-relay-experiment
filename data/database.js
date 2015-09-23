@@ -29,6 +29,7 @@ var apps = [1,2,3,4,5,6].map((num, i) => {
   var name = 'my-app-' + num;
   app.id = identifier;
   app.name = name;
+  app.isDeployed = true;
   return app;
 });
 
