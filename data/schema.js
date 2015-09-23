@@ -37,6 +37,10 @@ import {
   getViewer,
   getWidget,
   getWidgets,
+
+  App,
+  getApp,
+  getApps,
 } from './database';
 
 /**
@@ -52,6 +56,8 @@ var {nodeInterface, nodeField} = nodeDefinitions(
       return getUser(id);
     } else if (type === 'Widget') {
       return getWidget(id);
+    } else if (type === 'App') {
+      return getApp(id);
     } else {
       return null;
     }
@@ -59,8 +65,10 @@ var {nodeInterface, nodeField} = nodeDefinitions(
   (obj) => {
     if (obj instanceof User) {
       return userType;
-    } else if (obj instanceof Widget)  {
+    } else if (obj instanceof Widget) {
       return widgetType;
+    } else if (obj instanceof App) {
+      return appType;
     } else {
       return null;
     }
@@ -82,6 +90,12 @@ var userType = new GraphQLObjectType({
       args: connectionArgs,
       resolve: (_, args) => connectionFromArray(getWidgets(), args),
     },
+    apps: {
+      type: appConnection,
+      description: 'A person\'s collection of apps',
+      args: connectionArgs,
+      resolve: (_, args) => connectionFromArray(getApps(), args),
+    },
   }),
   interfaces: [nodeInterface],
 });
@@ -99,11 +113,28 @@ var widgetType = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
+var appType = new GraphQLObjectType({
+  name: 'App',
+  description: 'An Application',
+  fields: () => ({
+    id: globalIdField('App'),
+    name: {
+      type: GraphQLString,
+      description: 'The name of the app',
+    },
+  }),
+  interfaces: [nodeInterface],
+});
+
+
 /**
  * Define your own connection types here
  */
 var {connectionType: widgetConnection} =
   connectionDefinitions({name: 'Widget', nodeType: widgetType});
+
+var {connectionType: appConnection} =
+  connectionDefinitions({name: 'App', nodeType: appType});
 
 /**
  * This is the type that will be the root of our query,
@@ -117,6 +148,10 @@ var queryType = new GraphQLObjectType({
     viewer: {
       type: userType,
       resolve: () => getViewer(),
+    },
+    apps: {
+      type: appConnection,
+      resolve: () => getApps(),
     },
   }),
 });

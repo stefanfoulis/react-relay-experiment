@@ -1,15 +1,20 @@
 import 'babel/polyfill';
+import Header from '../components/Header.js';
+import AppList from '../components/AppList.js';
+
 
 class App extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <h1>Widget list</h1>
         <ul>
           {this.props.viewer.widgets.edges.map(edge =>
             <li>{edge.node.name} (ID: {edge.node.id})</li>
           )}
         </ul>
+        <AppList viewer={this.props.viewer} />
       </div>
     );
   }
@@ -27,6 +32,7 @@ export default Relay.createContainer(App, {
             },
           },
         },
+        ${AppList.getFragment('viewer')},
       }
     `,
   },
