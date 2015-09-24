@@ -5,6 +5,8 @@ import AppList from '../components/AppList.js';
 
 class App extends React.Component {
   render() {
+    var apps = this.props.viewer.apps.edges.map(app => app.node);
+    console.log(apps);
     return (
       <div>
         <Header />
@@ -14,7 +16,7 @@ class App extends React.Component {
             <li>{edge.node.name} (ID: {edge.node.id})</li>
           )}
         </ul>
-        <AppList viewer={this.props.viewer} />
+        <AppList apps={apps} />
       </div>
     );
   }
@@ -32,7 +34,13 @@ export default Relay.createContainer(App, {
             },
           },
         },
-        ${AppList.getFragment('viewer')},
+        apps(first: 10) {
+          edges {
+            node {
+              ${AppList.getFragment('apps')},
+            }
+          }
+        },
       },
     `,
   },
