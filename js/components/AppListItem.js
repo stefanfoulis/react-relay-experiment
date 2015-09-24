@@ -5,9 +5,13 @@ class AppListItem extends React.Component {
     let {app} = this.props;
     console.log(app);
     return (
-      <li key={app.id}>
-        {app.prettyName} isDeployed: {app.isDeployed ? "yes" : "no"} (ID: {app.id})
-      </li>
+      <a href='#' key={app.id} className='list-group-item'>
+        <h4 className='list-group-item-heading'>{app.prettyName}</h4>
+        <p><small>
+          {app.name} isDeployed: {app.isDeployed ? "yes" : "no"}<br/>
+          ID: {app.id}
+        </small></p>
+      </a>
     );
   }
 }

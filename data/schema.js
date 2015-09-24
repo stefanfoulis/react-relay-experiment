@@ -54,8 +54,6 @@ var {nodeInterface, nodeField} = nodeDefinitions(
     var {type, id} = fromGlobalId(globalId);
     if (type === 'User') {
       return getUser(id);
-    } else if (type === 'Widget') {
-      return getWidget(id);
     } else if (type === 'App') {
       return getApp(id);
     } else {
@@ -65,8 +63,6 @@ var {nodeInterface, nodeField} = nodeDefinitions(
   (obj) => {
     if (obj instanceof User) {
       return userType;
-    } else if (obj instanceof Widget) {
-      return widgetType;
     } else if (obj instanceof App) {
       return appType;
     } else {
@@ -84,30 +80,11 @@ var userType = new GraphQLObjectType({
   description: 'A person who uses our app',
   fields: () => ({
     id: globalIdField('User'),
-    widgets: {
-      type: widgetConnection,
-      description: 'A person\'s collection of widgets',
-      args: connectionArgs,
-      resolve: (_, args) => connectionFromArray(getWidgets(), args),
-    },
     apps: {
       type: appConnection,
       description: 'A person\'s collection of apps',
       args: connectionArgs,
       resolve: (_, args) => connectionFromArray(getApps(), args),
-    },
-  }),
-  interfaces: [nodeInterface],
-});
-
-var widgetType = new GraphQLObjectType({
-  name: 'Widget',
-  description: 'A shiny widget',
-  fields: () => ({
-    id: globalIdField('Widget'),
-    name: {
-      type: GraphQLString,
-      description: 'The name of the widget',
     },
   }),
   interfaces: [nodeInterface],
@@ -138,8 +115,6 @@ var appType = new GraphQLObjectType({
 /**
  * Define your own connection types here
  */
-var {connectionType: widgetConnection} =
-  connectionDefinitions({name: 'Widget', nodeType: widgetType});
 
 var {connectionType: appConnection} =
   connectionDefinitions({name: 'App', nodeType: appType});
@@ -156,10 +131,6 @@ var queryType = new GraphQLObjectType({
     viewer: {
       type: userType,
       resolve: () => getViewer(),
-    },
-    apps: {
-      type: appConnection,
-      resolve: () => getApps(),
     },
   }),
 });

@@ -6,10 +6,10 @@ class AppList extends React.Component {
     render() {
         var apps = this.props.apps;
         return (
-            <ul>{apps.map(app =>
+            <div className='list-group'>{apps.map(app =>
                 <AppListItem app={app} />
             )}
-            </ul>
+            </div>
         );
     };
 }
