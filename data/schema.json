@@ -600,6 +600,18 @@
               "deprecationReason": null
             },
             {
+              "name": "prettyName",
+              "description": "The pretty name of the app",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "isDeployed",
               "description": "is it deployed?",
               "args": [],

@@ -30,23 +30,9 @@ var apps = [1,2,3,4,5,6].map((num, i) => {
   app.id = identifier;
   app.name = name;
   app.isDeployed = true;
+  app.prettyName = 'My App ' + num;
   return app;
 });
-
-//function* range(start, end) {
-//    for (let i = start; i <= end; i++) {
-//        yield i;
-//    }
-//}
-//var apps = {};
-//for (let i of range(1,9 )) {
-//  var app = new App();
-//  var identifier = 'id-' + i;
-//  var name = 'my-app-' + i;
-//  app.id = identifier;
-//  app.name = name;
-//  apps[identifier] = app;
-//}
 
 
 module.exports = {

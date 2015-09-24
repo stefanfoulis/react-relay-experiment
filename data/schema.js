@@ -122,6 +122,10 @@ var appType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The name of the app',
     },
+    prettyName: {
+      type: GraphQLString,
+      description: 'The pretty name of the app',
+    },
     isDeployed: {
       type: GraphQLBoolean,
       description: 'is it deployed?',

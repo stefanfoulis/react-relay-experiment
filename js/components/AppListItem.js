@@ -2,10 +2,11 @@ import 'babel/polyfill';
 
 class AppListItem extends React.Component {
   render() {
-    var app = this.props.app;
+    let {app} = this.props;
+    console.log(app);
     return (
-      <li>
-        {app.node.name} deployed: {app.node.isDeployed} (ID: {app.node.id})
+      <li key={app.id}>
+        {app.prettyName} isDeployed: {app.isDeployed ? "yes" : "no"} (ID: {app.id})
       </li>
     );
   }
@@ -13,12 +14,13 @@ class AppListItem extends React.Component {
 
 export default Relay.createContainer(AppListItem, {
   fragments: {
-    //app: () => Relay.QL`
-    //  fragment on App {
-    //    id,
-    //    name,
-    //    isDeployed,
-    //  }
-    //`,
+    app: () => Relay.QL`
+      fragment on App {
+        id,
+        name,
+        isDeployed,
+        prettyName,
+      }
+    `,
   },
 });
