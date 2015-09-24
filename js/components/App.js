@@ -6,7 +6,6 @@ import AppList from '../components/AppList.js';
 class App extends React.Component {
   render() {
     var apps = this.props.viewer.apps.edges.map(app => app.node);
-    console.log(apps);
     return (
       <div>
         <Header />

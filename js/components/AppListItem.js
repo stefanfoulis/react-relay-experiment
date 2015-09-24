@@ -3,7 +3,6 @@ import 'babel/polyfill';
 class AppListItem extends React.Component {
   render() {
     let {app} = this.props;
-    console.log(app);
     return (
       <a href='#' key={app.id} className='list-group-item'>
         <h4 className='list-group-item-heading'>{app.prettyName}</h4>
