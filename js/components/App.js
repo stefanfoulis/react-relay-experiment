@@ -26,9 +26,10 @@ export default Relay.createContainer(App, {
         apps(first: 10) {
           edges {
             node {
-              ${AppList.getFragment('apps')},
+              id,
             }
-          }
+          },
+          ${AppList.getFragment('apps')},
         },
       },
     `,

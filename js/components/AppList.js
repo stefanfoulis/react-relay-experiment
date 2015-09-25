@@ -16,6 +16,12 @@ class AppList extends React.Component {
 
 export default Relay.createContainer(AppList, {
     fragments: {
+        //apps: () => Relay.QL`
+        //  fragment on App @relay(plural: true) {
+        //      id,
+        //      name,
+        //  }
+        //`,
         apps: () => Relay.QL`
           fragment on App @relay(plural: true) {
               id,
