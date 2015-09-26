@@ -8,7 +8,7 @@ class AppListItem extends React.Component {
   render() {
     let {app} = this.props;
     return (
-      <Link to={`/${app.slug}`} className='list-group-item'>
+      <Link to={`/${app.slug}`} activeClassName='active' className='list-group-item'>
         <h4 className='list-group-item-heading'>{app.prettyName}</h4>
         <p><small>
           {app.name} ID: {app.id}
