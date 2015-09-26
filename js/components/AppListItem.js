@@ -6,7 +6,7 @@ class AppListItem extends React.Component {
   render() {
     let {app} = this.props;
     return (
-      <a href='#' key={app.id} className='list-group-item'>
+      <a href='#' className='list-group-item'>
         <h4 className='list-group-item-heading'>{app.prettyName}</h4>
         <p><small>
           {app.name} isDeployed: {app.isDeployed ? "yes" : "no"}<br/>
