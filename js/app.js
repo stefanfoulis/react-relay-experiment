@@ -1,4 +1,8 @@
 import 'babel/polyfill';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Relay from 'react-relay';
+
 import ReactRouterRelay from 'react-router-relay';
 import {Router, Route} from 'react-router';
 

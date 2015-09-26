@@ -1,4 +1,6 @@
 import 'babel/polyfill';
+import React from 'react';
+import Relay from 'react-relay';
 
 class Header extends React.Component {
   render() {

@@ -1,4 +1,7 @@
 import 'babel/polyfill';
+import React from 'react';
+import Relay from 'react-relay';
+
 import Header from '../components/Header.js';
 import AppList from '../components/AppList.js';
 
@@ -27,9 +30,9 @@ export default Relay.createContainer(App, {
           edges {
             node {
               id,
-            }
+              ${AppList.getFragment('apps')},
+            },
           },
-          ${AppList.getFragment('apps')},
         },
       },
     `,
