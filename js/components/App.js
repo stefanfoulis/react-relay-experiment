@@ -16,11 +16,15 @@ class App extends React.Component {
           <div className='col-md-2'>
             <AppList apps={apps} />
           </div>
+          <div className="'col-md-10">
+            {this.props.children}
+          </div>
         </div>
       </div>
     );
   }
 }
+
 
 export default Relay.createContainer(App, {
   fragments: {

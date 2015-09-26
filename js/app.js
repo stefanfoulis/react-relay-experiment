@@ -4,9 +4,11 @@ import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
 
 import ReactRouterRelay from 'react-router-relay';
-import {Router, Route} from 'react-router';
+import {Router, Route, IndexRoute} from 'react-router';
 
 import App from './components/App';
+import AppIndex from './components/AppIndex';
+import AppDetail from './components/AppDetail';
 
 
 const ViewerQueries = {
@@ -17,6 +19,8 @@ const ViewerQueries = {
 ReactDOM.render((
   <Router createElement={ReactRouterRelay.createElement}>
     <Route path="/" component={App} queries={ViewerQueries}>
+      <IndexRoute component={AppIndex} />
+      <Route path="app/:id" component={AppDetail} queries={ViewerQueries} />
     </Route>
   </Router>
 ), document.getElementById('root'));

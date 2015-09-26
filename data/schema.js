@@ -84,6 +84,16 @@ var userType = new GraphQLObjectType({
       args: connectionArgs,
       resolve: (_, args) => connectionFromArray(getApps(), args),
     },
+    app: {
+      type: appType,
+      description: 'a specific app by id',
+      args: {
+        id: {
+          type: GraphQLString,
+        },
+      },
+      resolve: (_, args) => getApp(args['id']),
+    },
   }),
   interfaces: [nodeInterface],
 });
