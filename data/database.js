@@ -16,12 +16,6 @@ class App extends Object {}
 var viewer = new User();
 viewer.id = '1';
 viewer.name = 'Anonymous';
-var widgets = ['What\'s-it', 'Who\'s-it', 'How\'s-it'].map((name, i) => {
-  var widget = new Widget();
-  widget.name = name;
-  widget.id = `${i}`;
-  return widget;
-});
 
 var apps = [1,2,3,4,5,6].map((num, i) => {
   var app = new App();
@@ -39,8 +33,6 @@ module.exports = {
   // Export methods that your schema can use to interact with your database
   getUser: (id) => id === viewer.id ? viewer : null,
   getViewer: () => viewer,
-  getWidget: (id) => widgets.find(w => w.id === id),
-  getWidgets: () => widgets,
   getApp: (id) => apps.find(w => w.id === id),
   getApps: () => apps,
   User,

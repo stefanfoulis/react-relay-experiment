@@ -35,8 +35,6 @@ import {
   Widget,
   getUser,
   getViewer,
-  getWidget,
-  getWidgets,
 
   App,
   getApp,
