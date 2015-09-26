@@ -1,18 +1,19 @@
 import 'babel/polyfill';
 import React from 'react';
 import Relay from 'react-relay';
+import Link from 'react-router/lib/Link';
+
 
 class AppListItem extends React.Component {
   render() {
     let {app} = this.props;
     return (
-      <a href='#' className='list-group-item'>
+      <Link to={`/${app.slug}`} className='list-group-item'>
         <h4 className='list-group-item-heading'>{app.prettyName}</h4>
         <p><small>
-          {app.name} isDeployed: {app.isDeployed ? "yes" : "no"}<br/>
-          ID: {app.id}
+          {app.name} ID: {app.id}
         </small></p>
-      </a>
+      </Link>
     );
   }
 }
@@ -22,6 +23,7 @@ export default Relay.createContainer(AppListItem, {
     app: () => Relay.QL`
       fragment on App {
         id,
+        slug,
         name,
         isDeployed,
         prettyName,

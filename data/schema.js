@@ -103,6 +103,10 @@ var appType = new GraphQLObjectType({
   description: 'An Application',
   fields: () => ({
     id: globalIdField('App'),
+    slug: {
+      type: GraphQLString,
+      description: 'The slug of the app for usage in urls',
+    },
     name: {
       type: GraphQLString,
       description: 'The name of the app',

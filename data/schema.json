@@ -414,6 +414,18 @@
               "deprecationReason": null
             },
             {
+              "name": "slug",
+              "description": "The slug of the app for usage in urls",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "name",
               "description": "The name of the app",
               "args": [],

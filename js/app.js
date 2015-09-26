@@ -20,14 +20,7 @@ ReactDOM.render((
   <Router createElement={ReactRouterRelay.createElement}>
     <Route path="/" component={App} queries={ViewerQueries}>
       <IndexRoute component={AppIndex} />
-      <Route path="app/:id" component={AppDetail} queries={ViewerQueries} />
+      <Route path=":id" component={AppDetail} queries={ViewerQueries} />
     </Route>
   </Router>
 ), document.getElementById('root'));
-
-//ReactDOM.render((
-//  <Relay.RootContainer
-//    Component={App}
-//    route={new AppHomeRoute()}
-//  />
-//), document.getElementById('root'));

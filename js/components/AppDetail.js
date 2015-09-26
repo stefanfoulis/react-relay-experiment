@@ -5,14 +5,14 @@ import Relay from 'react-relay';
 
 class AppDetail extends React.Component {
   render() {
-    console.log(this.props.viewer.apps);
-    console.log(this.props.viewer.app);
     var app = this.props.viewer.app;
     return (
       <div>
         <h3>App Detail</h3>
         id: {app.id}<br/>
+        slug: {app.slug}<br/>
         prettyName: {app.prettyName}<br/>
+        isDeployed: {app.isDeployed ? "yes" : "no"}<br/>
       </div>
     );
   }
@@ -28,10 +28,11 @@ export default Relay.createContainer(AppDetail, {
       fragment on User {
         app(id: $id) {
           id,
+          slug,
           name,
           isDeployed,
           prettyName,
-        }
+        },
       }
     `,
   },
